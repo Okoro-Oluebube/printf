@@ -24,3 +24,33 @@ int _strlen(char *s)
  * @...: Unknown arguments
  * Return: Integer
  */
+int _printf(const char *format, ...)
+{
+	va_list fList;
+	int len;
+
+	va_start(fList, format);
+	while (format != '\0')
+	{
+		if (format == '%')
+		{
+			*(++format);
+			if (format == 'c')
+			{
+				vprintf("format, va_arg(fList, char *)");
+			}
+			else if (format == 's')
+			{
+				vprintf("format, va_arg(fList, char *)");
+			}
+			else if (format == '%')
+			{
+				vprintf("format, va_arg(fList, char *)");
+			}
+		}
+		vprintf("format, fList");
+		va_end(fList);
+	}
+	len = _strlen(format);
+	return (len);
+}
