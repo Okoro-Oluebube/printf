@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdarg.h>
 
 /**
  * _strlen - Number of char in a string
@@ -26,31 +25,43 @@ int _strlen(char *s)
  */
 int _printf(const char *format, ...)
 {
-	va_list fList;
-	int len;
-	int i = 0;
+	va_list fp;
+	int len, i;
 
-	va_start(fList, format);
-
-	if (*format != '\0')
+	va_start(fp, format);
+	len = 0;
+	while (*format != '\0')
 	{
-		while (format[i])
+		if (*format != '%')
 		{
-			if (i == 'c')
-			{
-				i = va_arg(fList, int);
-					vprintf(i, fList);
-			}
-			if (i == 's')
-			{
-				i = va_arg(fList, char *);
-					vprintf(i, fList);
-			}
-			if (i == '%')
-				vprintf(i, fList);
+			write(1, format, 1);
+			len++;
 		}
-		va_end(fList);
+		else if (*format == '%')
+		{
+			format++;
+			if (*format == 'c')
+			{
+				char c = va_arg(fp, int);
+
+				write(1, &c, 1);
+				len++;
+			}
+			else if (*format == 's')
+			{
+				char *s = va_arg(fp, char *);
+
+				i = _strlen(s);
+				write(1, s, i);
+				len += i;
+			}
+			else if (*format == '%')
+			{
+				write(1, format, 1);
+				len++;
+			}
+		}
+		va_end(fp);
 	}
-	len = _strlen(format);
 	return (len);
 }
