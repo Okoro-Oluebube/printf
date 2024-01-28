@@ -10,7 +10,7 @@ int _strlen(char *s)
 {
 	int len = 0;
 
-	while (s != '\0')
+	while (*s != '\0')
 	{
 		len++;
 		s++;
@@ -28,27 +28,27 @@ int _printf(const char *format, ...)
 {
 	va_list fList;
 	int len;
+	int i = 0;
 
 	va_start(fList, format);
-	while (format != '\0')
+
+	if (*format != '\0')
 	{
-		if (format == '%')
+		while (format[i])
 		{
-			*(++format);
-			if (format == 'c')
+			if (i == 'c')
 			{
-				vprintf("format, va_arg(fList, char *)");
+				i = va_arg(fList, int);
+					vprintf(i, fList);
 			}
-			else if (format == 's')
+			if (i == 's')
 			{
-				vprintf("format, va_arg(fList, char *)");
+				i = va_arg(fList, char *);
+					vprintf(i, fList);
 			}
-			else if (format == '%')
-			{
-				vprintf("format, va_arg(fList, char *)");
-			}
+			if (i == '%')
+				vprintf(i, fList);
 		}
-		vprintf("format, fList");
 		va_end(fList);
 	}
 	len = _strlen(format);
