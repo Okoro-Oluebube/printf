@@ -39,7 +39,6 @@ int _printf(const char *format, ...)
 		else if (*format == '%')
 		{
 			format++;
-			len++;
 			if (*format == 'c')
 			{
 				char c = va_arg(fList, int);
