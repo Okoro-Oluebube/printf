@@ -25,7 +25,7 @@ int _strlen(char *s)
 int _printf(const char *format, ...)
 {
 	va_list fList;
-	int len = 0, i;
+	int len = 0;
 
 	va_start(fList, format);
 	while (*format != '\0' && format != NULL)
@@ -39,6 +39,7 @@ int _printf(const char *format, ...)
 		else if (*format == '%')
 		{
 			format++;
+			len++;
 			if (*format == 'c')
 			{
 				char c = va_arg(fList, int);
@@ -50,9 +51,8 @@ int _printf(const char *format, ...)
 			{
 				char *s = va_arg(fList, char *);
 
-				i = _strlen(s);
-				write(1, s, i);
-				len += i;
+				write(1, s, _strlen(s));
+				len += _strlen(s);
 			}
 			else if (*format == '%')
 			{
