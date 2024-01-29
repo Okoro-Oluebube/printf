@@ -1,21 +1,6 @@
 #include "main.h"
-/**
- * _strlen - Number of char in a string
- * @s: String
- * Return: Length of string
- */
-int _strlen(char *s)
-{
-	int len = 0;
-
-	while (*s != '\0')
-	{
-		len++;
-		s++;
-	}
-	return (len);
-}
-
+#include <stdlib.h>
+#include <string.h>
 /**
  * _printf - Produces output according to a format
  * @format: Format specifier
@@ -49,7 +34,7 @@ int _printf(const char *format, ...)
 			{
 				char *s = va_arg(fList, char *);
 
-				i = _strlen(s);
+				i = strlen(s);
 				write(1, s, i);
 				len += i;
 			}
