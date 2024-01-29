@@ -59,6 +59,7 @@ int _printf(const char *format, ...)
 				write(1, format, 1);
 				len++;
 			}
+			format++;
 		}
 	}
 	va_end(fList);
