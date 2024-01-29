@@ -62,7 +62,7 @@ int _printf(const char *format, ...)
 			}
 			format++;
 		}
-		va_end(fList);
 	}
+	va_end(fList);
 	return (len);
 }
