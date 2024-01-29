@@ -20,13 +20,12 @@ int _strlen(char *s)
 /**
  * _printf - Produces output according to a format
  * @format: Format specifier
- * @...: Unknown arguments
  * Return: Integer
  */
 int _printf(const char *format, ...)
 {
 	va_list fList;
-	int len = 0, i;
+	int len = 0;
 
 	va_start(fList, format);
 
@@ -52,9 +51,8 @@ int _printf(const char *format, ...)
 			{
 				char *s = va_arg(fList, char *);
 
-				i = _strlen(s);
-				write(1, s, i);
-				len += i;
+				write(1, s, _strlen(s));
+				len += _strlen(s);
 			}
 			else if (*format == '%')
 			{
