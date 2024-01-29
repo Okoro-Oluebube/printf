@@ -25,16 +25,16 @@ int _strlen(char *s)
  */
 int _printf(const char *format, ...)
 {
-	va_list fp;
-	int len, i;
+	va_list fList;
+	int len = 0, i;
 
-	va_start(fp, format);
-	len = 0;
+	va_start(fList, format);
 	while (*format != '\0')
 	{
 		if (*format != '%')
 		{
 			write(1, format, 1);
+			format++;
 			len++;
 		}
 		else if (*format == '%')
@@ -42,14 +42,14 @@ int _printf(const char *format, ...)
 			format++;
 			if (*format == 'c')
 			{
-				char c = va_arg(fp, int);
+				char c = va_arg(fList, int);
 
 				write(1, &c, 1);
 				len++;
 			}
 			else if (*format == 's')
 			{
-				char *s = va_arg(fp, char *);
+				char *s = va_arg(fList, char *);
 
 				i = _strlen(s);
 				write(1, s, i);
@@ -60,8 +60,9 @@ int _printf(const char *format, ...)
 				write(1, format, 1);
 				len++;
 			}
+			format++;
 		}
-		va_end(fp);
+		va_end(fList);
 	}
 	return (len);
 }
