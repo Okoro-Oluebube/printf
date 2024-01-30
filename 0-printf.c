@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdarg.h>
 /**
  * _strlen - Number of char in a string
  * @s: String
