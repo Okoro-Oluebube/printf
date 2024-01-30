@@ -64,26 +64,3 @@ int _printf(const char *format, ...)
 	va_end(fList);
 	return (len);
 }
-
-/**
- * get_fmt_func - Selects the correct format to use
- * @s: The format passed as argument
- *
- * Return: A pointer to the function corresponding with the format specifier
- */
-int (*get_fmt_func(char *s)(const char *format, ...))
-{
-	fmt fmts[] = {
-		{"c", fm_c},
-		{"s", fm_s},
-		{"%", fm_percent},
-		{NULL, NULL},
-	};
-
-	int i = 0;
-
-	while (fmts[i].fm != NULL && *(fmts[i].fm) != *s)
-		i++;
-
-	return (fmts[i].p);
-}
