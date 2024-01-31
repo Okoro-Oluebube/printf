@@ -62,12 +62,11 @@ int _printf(const char *format, ...)
 				write(1, format, 1);
 				len++;
 			}
-			format++;
-		}
-		else
-		{
-			format--;
-			write(1, format, 1);
+			else
+			{
+				format--;
+				write(1, format, 1);
+			}
 			format++;
 		}
 	}
