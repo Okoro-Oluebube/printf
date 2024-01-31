@@ -27,7 +27,11 @@ int _printf(const char *format, ...)
 	int len = 0, i;
 
 	va_start(fList, format);
-	while (*format != '\0' && format != NULL)
+	if ((format[0] == '%' && format[1] == '\0') || format == NULL)
+	{
+		return (-1);
+	}
+	while (*format != '\0')
 	{
 		if (*format != '%')
 		{
@@ -58,6 +62,12 @@ int _printf(const char *format, ...)
 				write(1, format, 1);
 				len++;
 			}
+			format++;
+		}
+		else
+		{
+			format--;
+			write(1, format, 1);
 			format++;
 		}
 	}
