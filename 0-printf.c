@@ -52,6 +52,9 @@ int _printf(const char *format, ...)
 				write(1, format, 1);
 				len++;
 			}
+			else if (*format == 'b')
+			{
+			}
 			format++;
 		}
 	}
