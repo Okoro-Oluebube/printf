@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdarg.h>
 /**
  * _strlen - Number of char in a string
  * @s: String
@@ -25,10 +24,10 @@ int _strlen(char *s)
 int _printf(const char *format, ...)
 {
 	va_list fList;
-	int len = 0;
+	int len = 0, i;
 
 	va_start(fList, format);
-	while (*format != '\0')
+	while (*format != '\0' && format != NULL)
 	{
 		if (*format != '%')
 		{
@@ -41,19 +40,23 @@ int _printf(const char *format, ...)
 			format++;
 			if (*format == 'c')
 			{
-				print_c(fList);
+				char c = va_arg(fList, int);
+
+				write(1, &c, 1);
+				len++;
 			}
 			else if (*format == 's')
 			{
-				print_s(fList);
+				char *s = va_arg(fList, char *);
+
+				i = _strlen(s);
+				write(1, s, i);
+				len += i;
 			}
 			else if (*format == '%')
 			{
 				write(1, format, 1);
 				len++;
-			}
-			else if (*format == 'b')
-			{
 			}
 			format++;
 		}
