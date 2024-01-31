@@ -7,33 +7,41 @@
  * @s: string to be printed
  * @fList: Va list
  */
-void printf_s(va_list fList, char *s)
+int printf_s(va_list fList)
 {
 	char *s = va_arg(fList, char *);
-	int len = 0;
+	int len;
 
-	if (*s == NULL)
+	if (s == NULL)
 	{
 		return (-1);
 	}
+	/**
+	 * else
+	*{
+		*else if (*s == '%%s')
+		*{
+			*putchar(s + '0');
+		*}
+		*else if (*s == '\0')
+		*{
+			*return (s);
+		*}
+		*else
+		*{
+			*return (-2);
+		*}
+	*}
+	*for (i = 0; i < s; i++)
+	*{
+		*i = _strlen(s);
+		*len += i;
+	*}
+	*/
 	else
 	{
-		else if (*s == '%%s')
-		{
-			putchar(s + '0');
-		}
-		else if (*s == '\0')
-		{
-			return (s);
-		}
-		else
-		{
-			return (-2);
-		}
+		len = _strlen(s);
+		write(1, s, len);
 	}
-	for (i = 0; i < s; i++)
-	{
-		i = _strlen(s);
-		len += i;
-	}
+	return (len);
 }

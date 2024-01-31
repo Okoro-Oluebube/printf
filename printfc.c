@@ -6,20 +6,23 @@
  * @c: Character
  * @fList: Va list
  */
-void printf_c(va_list fList, char c)
+void printf_c(va_list fList)
 {
 	char c = va_arg(fList, int);
 
-	if (c == NULL)
-	{
-		return (NULL);
-	}
-	else if (c == '%%c')
-	{
-		return ('%c');
-	}
-	else
-	{
-		return (c);
-	}
+	/**
+	 * if (c == NULL)
+	*{
+		*return (NULL);
+	*}
+	*else if (c == '%%c')
+	*{
+		*return ('%c');
+	*}
+	*else
+	*{
+		*return (c);
+	*}
+	*/
+	write(1, &c, 1);
 }
