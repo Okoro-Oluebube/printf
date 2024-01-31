@@ -44,18 +44,14 @@ int _printf(const char *format, ...)
 			format++;
 			if (*format == 'c')
 			{
-				char c = va_arg(fList, int);
-
+				printf_c(c);
 				write(1, &c, 1);
 				len++;
 			}
 			else if (*format == 's')
 			{
-				char *s = va_arg(fList, char *);
-
-				i = _strlen(s);
+				printf_s(s);
 				write(1, s, i);
-				len += i;
 			}
 			else if (*format == '%')
 			{
