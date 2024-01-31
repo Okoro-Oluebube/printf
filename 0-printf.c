@@ -25,10 +25,10 @@ int _strlen(char *s)
 int _printf(const char *format, ...)
 {
 	va_list fList;
-	int len = 0, i;
+	int len = 0;
 
 	va_start(fList, format);
-	while (*format != '\0' && format != NULL)
+	while (*format != '\0')
 	{
 		if (*format != '%')
 		{
@@ -41,18 +41,11 @@ int _printf(const char *format, ...)
 			format++;
 			if (*format == 'c')
 			{
-				char c = va_arg(fList, int);
-
-				write(1, &c, 1);
-				len++;
+				print_c(fList);
 			}
 			else if (*format == 's')
 			{
-				char *s = va_arg(fList, char *);
-
-				i = _strlen(s);
-				write(1, s, i);
-				len += i;
+				print_s(fList);
 			}
 			else if (*format == '%')
 			{
