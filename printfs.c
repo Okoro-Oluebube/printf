@@ -31,7 +31,7 @@ void printf_s(va_list fList, char *s)
 			return (-2);
 		}
 	}
-	for (; i < s; i++)
+	for (i = 0; i < s; i++)
 	{
 		i = _strlen(s);
 		len += i;
