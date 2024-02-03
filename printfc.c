@@ -6,10 +6,12 @@
  * @c: Character
  * @fList: Va list
  */
-void printf_c(va_list fList)
+int printf_c(va_list fList)
 {
+	int len;
 	char c = va_arg(fList, int);
 
+	len = 0;
 	/**
 	 * if (c == NULL)
 	*{
@@ -25,4 +27,6 @@ void printf_c(va_list fList)
 	*}
 	*/
 	write(1, &c, 1);
+	len++;
+	return (len);
 }
