@@ -3,10 +3,13 @@
 
 #include <unistd.h>
 #include <stdarg.h>
-int _printf(const char *format, ...);
+#include <stddef.h>
 int _strlen(char *s);
-int printf_s(va_list fList);
-int printf_c(va_list flist);
-void printf_nums(va_list fList);
+int _printf(const char *format, ...);
+int _putchar(char c);
+void print_char(va_list formatList, int *len);
+void print_string(va_list formatList, int *len);
+void print_percent(int *len);
+void handle_f_s(const char **format, va_list formatList);
 
 #endif
