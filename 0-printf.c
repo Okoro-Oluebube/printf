@@ -10,6 +10,11 @@ int _printf(const char *format, ...)
 	va_list formatList;
 	int len = 0;
 
+	if (format == NULL)
+	{
+		return (-1);
+	}
+
 	va_start(formatList, format);
 	while (*format != '\0')
 	{
