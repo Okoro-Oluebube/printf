@@ -7,7 +7,9 @@
  */
 void handle_f_s(const char **format, va_list formatList)
 {
-	 int len = 0;
+	int len = 0;
+	char next_char = '\0';
+
 	switch (**format)
 	{
 		case 'c':
@@ -24,7 +26,14 @@ void handle_f_s(const char **format, va_list formatList)
 		}
 		case '%':
 		{
-			print_percent(&len);
+			(*format)++;
+			next_char = **format;
+			if (next_char == '%')
+			{
+				_putchar('%');
+			}
+			else
+				print_percent(&len);
 			break;
 		}
 		default:
