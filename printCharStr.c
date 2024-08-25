@@ -37,3 +37,19 @@ void print_percent(int *len)
 	write(1, "%", 1);
 	(*len)++;
 }
+
+/**
+ * print_int - Format specifier d
+ * @formatList: Va list
+ * @len: Length
+ */
+void print_int(va_list formatList, int *len)
+{
+	int d = va_arg(formatList, int);
+	char buffer[22]; /* to hold 12 bytes, sign and null terminator */
+	int length;
+
+	length = numLen(d, buffer);
+	write(1, buffer, length);
+	(*len) += length;
+}

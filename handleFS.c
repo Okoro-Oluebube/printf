@@ -36,6 +36,12 @@ void handle_f_s(const char **format, va_list formatList)
 				print_percent(&len);
 			break;
 		}
+		case 'd':
+		{
+			print_int(formatList, &len);
+			(*format)++;
+			break;
+		}
 		default:
 			len++;
 			break;
