@@ -4,9 +4,12 @@
  * @s: String
  * Return: Length of string
  */
-int _strlen(char *s)
+int _strlen(const char *s)
 {
 	int len = 0;
+
+	if (s == NULL)
+		return (0);
 
 	while (*s != '\0')
 	{

@@ -28,6 +28,7 @@ int _printf(const char *format, ...)
 		{
 			format++;
 			handle_f_s(&format, formatList);
+			moreFormat(&format, formatList);
 		}
 	}
 	va_end(formatList);

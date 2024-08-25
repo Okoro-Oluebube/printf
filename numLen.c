@@ -40,6 +40,5 @@ int numLen(int digit, char *buffer)
 		buffer[j] = buffer[i - j - 1];
 		buffer[i - j - 1] = temp;
 	}
-	buffer[i] = '\0';
 	return (i);
 }

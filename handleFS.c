@@ -8,7 +8,6 @@
 void handle_f_s(const char **format, va_list formatList)
 {
 	int len = 0;
-	char next_char = '\0';
 
 	switch (**format)
 	{
@@ -27,24 +26,12 @@ void handle_f_s(const char **format, va_list formatList)
 		case '%':
 		{
 			(*format)++;
-			next_char = **format;
-			if (next_char == '%')
-			{
-				_putchar('%');
-			}
-			else
-				print_percent(&len);
+			print_percent(&len);
 			break;
 		}
 		case 'd':
 		{
 			print_int(formatList, &len);
-			(*format)++;
-			break;
-		}
-		case 'i':
-		{
-			print_integer(formatList, &len);
 			(*format)++;
 			break;
 		}
