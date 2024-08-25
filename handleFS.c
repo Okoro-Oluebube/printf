@@ -25,8 +25,8 @@ void handle_f_s(const char **format, va_list formatList)
 		}
 		case '%':
 		{
+			_putchar('%');
 			(*format)++;
-			print_percent(&len);
 			break;
 		}
 		case 'd':

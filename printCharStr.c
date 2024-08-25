@@ -29,16 +29,6 @@ void print_string(va_list formatList, int *len)
 }
 
 /**
- * print_percent - Format Specifier %
- * @len: Length
- */
-void print_percent(int *len)
-{
-	write(1, "%", 1);
-	(*len)++;
-}
-
-/**
  * print_int - Format specifier d
  * @formatList: Va list
  * @len: Length
