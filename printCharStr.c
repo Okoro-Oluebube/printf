@@ -46,10 +46,26 @@ void print_percent(int *len)
 void print_int(va_list formatList, int *len)
 {
 	int d = va_arg(formatList, int);
-	char buffer[22]; /* to hold 12 bytes, sign and null terminator */
+	char buffer[22]; /* to hold 20 bytes, sign and null terminator */
 	int length;
 
 	length = numLen(d, buffer);
+	write(1, buffer, length);
+	(*len) += length;
+}
+
+/**
+ * print_integer - Format specifier i
+ * @formatList: Va list
+ * @len: Length
+ */
+void print_integer(va_list formatList, int *len)
+{
+	int i = va_arg(formatList, int);
+	char buffer[22]; /* to hold 20 bytes, sign and null terminator */
+	int length;
+
+	length = numLen(i, buffer);
 	write(1, buffer, length);
 	(*len) += length;
 }

@@ -42,6 +42,12 @@ void handle_f_s(const char **format, va_list formatList)
 			(*format)++;
 			break;
 		}
+		case 'i':
+		{
+			print_integer(formatList, &len);
+			(*format)++;
+			break;
+		}
 		default:
 			len++;
 			break;
