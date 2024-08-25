@@ -16,7 +16,7 @@ void moreFormat(const char **format, va_list formatList)
 			print_integer(formatList, &len);
 			(*format)++;
 			break;
-		}	
+		}
 		default:
 			len++;
 			break;
